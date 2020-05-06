@@ -1,0 +1,217 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\CommandeRepository")
+ */
+class Commande
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $montantLigne;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateCommande;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Commentaire", mappedBy="commandes")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Livraison", inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $livraison;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ModePaiement", inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $modePaiement;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\ModeleChaussure", mappedBy="commandes")
+     */
+    private $modeleChaussures;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Taille", inversedBy="commandes")
+     */
+    private $tailles;
+
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+        $this->modeleChaussures = new ArrayCollection();
+        $this->tailles = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getMontantLigne(): ?string
+    {
+        return $this->montantLigne;
+    }
+
+    public function setMontantLigne(string $montantLigne): self
+    {
+        $this->montantLigne = $montantLigne;
+
+        return $this;
+    }
+
+    public function getDateCommande(): ?\DateTimeInterface
+    {
+        return $this->dateCommande;
+    }
+
+    public function setDateCommande(\DateTimeInterface $dateCommande): self
+    {
+        $this->dateCommande = $dateCommande;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->addCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            $commentaire->removeCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getLivraison(): ?Livraison
+    {
+        return $this->livraison;
+    }
+
+    public function setLivraison(?Livraison $livraison): self
+    {
+        $this->livraison = $livraison;
+
+        return $this;
+    }
+
+    public function getModePaiement(): ?ModePaiement
+    {
+        return $this->modePaiement;
+    }
+
+    public function setModePaiement(?ModePaiement $modePaiement): self
+    {
+        $this->modePaiement = $modePaiement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ModeleChaussure[]
+     */
+    public function getModeleChaussures(): Collection
+    {
+        return $this->modeleChaussures;
+    }
+
+    public function addModeleChaussure(ModeleChaussure $modeleChaussure): self
+    {
+        if (!$this->modeleChaussures->contains($modeleChaussure)) {
+            $this->modeleChaussures[] = $modeleChaussure;
+            $modeleChaussure->addCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeModeleChaussure(ModeleChaussure $modeleChaussure): self
+    {
+        if ($this->modeleChaussures->contains($modeleChaussure)) {
+            $this->modeleChaussures->removeElement($modeleChaussure);
+            $modeleChaussure->removeCommande($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Taille[]
+     */
+    public function getTailles(): Collection
+    {
+        return $this->tailles;
+    }
+
+    public function addTaille(Taille $taille): self
+    {
+        if (!$this->tailles->contains($taille)) {
+            $this->tailles[] = $taille;
+        }
+
+        return $this;
+    }
+
+    public function removeTaille(Taille $taille): self
+    {
+        if ($this->tailles->contains($taille)) {
+            $this->tailles->removeElement($taille);
+        }
+
+        return $this;
+    }
+}

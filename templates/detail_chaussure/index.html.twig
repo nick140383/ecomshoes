@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailChaussureController!{% endblock %}
+
+{% block body %}
+<h1>detail de la chaussure selectionnée</h1>
+
+<div class="row">
+        <img class="fit-picture"
+             src="/img/{{ chaussure.coverImage }}"
+             alt="nike">
+
+        <div class="card-text">
+            <h1>{{ chaussure.nom }}</h1>
+            <p>{{ chaussure.description }}</p>
+            <p class="h2">
+                <strong>1 piece pour</strong><strong>{{ chaussure.prix }}&euro;</strong>
+            </p>
+            <a href="#" class="btn btn-primary">Ajouter au panier!</a>
+</div>
+    <div id="carouselExampleIndicators" class="carousel slide"
+         data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for photo in chaussure.Photos() %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{
+                loop.index0 }}" {% if loop.first %} class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+
+        <div class="carousel-inner">
+            {% for photo in chaussure.Photos %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <img class="d-block w-100" src="/img/{{photo.url}}" alt="first slide">
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+
+    {% endblock %}
