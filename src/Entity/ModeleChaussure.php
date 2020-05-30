@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use http\Env\Url;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ModeleChaussureRepository")
@@ -56,24 +56,24 @@ class ModeleChaussure
     private $marque;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="modeleChaussure")
+     * @ORM\OneToMany(targetEntity="App\Entity\Photo",cascade={"persist"},mappedBy="modeleChaussure")
      */
     private $photos;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $coverImage;
 
     /**
      * @var photo
      */
     private $photo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $coverImage;
 
 
     public function __construct()
@@ -82,7 +82,7 @@ class ModeleChaussure
         $this->commandes = new ArrayCollection();
         $this->tailles = new ArrayCollection();
         $this->promotions = new ArrayCollection();
-        $this->photos = new ArrayCollection();
+       $this->photos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,18 +240,6 @@ class ModeleChaussure
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
@@ -261,15 +249,16 @@ class ModeleChaussure
     /**
      * @return Collection|Photo[]
      */
-    public function getPhotos(): Collection
+    public function getPhotos() :Collection
     {
         return $this->photos;
     }
 
-    public function addPhoto(Photo $photo): self
+    public function addPhoto(Photo $photo)
     {
         if (!$this->photos->contains($photo)) {
             $this->photos[] = $photo;
+            $this->photos->add($photo);
             $photo->setModeleChaussure($this);
         }
 
@@ -289,6 +278,32 @@ class ModeleChaussure
         return $this;
     }
 
+
+
+
+    public function setPhoto(photo $photos)
+    {
+        $this->$photos;
+        return $this;
+    }
+
+    public function getPhoto(): ?photo
+    {
+        return $this->photo;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
     public function getCoverImage(): ?string
     {
         return $this->coverImage;
@@ -301,14 +316,5 @@ class ModeleChaussure
         return $this;
     }
 
-    public function setPhoto(photo $photo): self
-    {
-        $this->photo=$photo;
-        return $this;
-    }
 
-    public function getPhoto(): ?photo
-    {
-        return $this->photo;
-    }
 }

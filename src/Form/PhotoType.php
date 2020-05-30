@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Photo;
+use phpDocumentor\Reflection\Types\Object_;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,8 +14,17 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url',FileType::class,array('label'=>'ajouter une autre image'))
-        ;
+            ->add('url' ,FileType::class,[
+               // 'multiple'=>true,
+               ])
+             //   'data_class' => Object_::class,
+               //  'mapped' => false,
+              //  'allow_file_upload'=>true,
+
+         //  ->setMethod("POST");
+
+        ->setMethod("POST");
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

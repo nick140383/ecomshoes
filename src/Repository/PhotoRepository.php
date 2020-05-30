@@ -19,10 +19,10 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-    // /**
-    //  * @return Photo[] Returns an array of Photo objects
-    //  */
-    /*
+     /**
+     * @return Photo[] Returns an array of Photo objects
+     */
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,7 +34,7 @@ class PhotoRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Photo

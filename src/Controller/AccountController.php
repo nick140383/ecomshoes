@@ -36,7 +36,7 @@ class AccountController extends AbstractController
     public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         $user = new Client();
-
+        $list = $this->marqueRepository->findAll();
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
@@ -49,11 +49,12 @@ class AccountController extends AbstractController
             $manager->flush();
             $this->addFlash('success',
                 "Bravo <strong class='text-danger'>{$user->getNom()}</strong> Inscription reussie");
-            return $this->redirectToRoute('account_login');
+
+            return $this->redirectToRoute('account_login', ['list' =>$list]);
         }
 
         return $this->render('account/registration.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),'list'=>$list
         ]);
     }
 

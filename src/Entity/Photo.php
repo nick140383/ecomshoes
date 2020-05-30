@@ -5,7 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\This;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
@@ -22,12 +23,7 @@ class Photo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $url;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ModeleChaussure", mappedBy="photo")
-     */
-    private $modeles;
+    protected $url;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ModeleChaussure", inversedBy="photos")
@@ -35,9 +31,12 @@ class Photo
      */
     private $modeleChaussure;
 
+
     public function __construct()
     {
-        $this->modeles = new ArrayCollection();
+
+
+        $this->modeleChaussure = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -45,7 +44,7 @@ class Photo
         return $this->id;
     }
 
-    public function getUrl(): ?string
+    public function getUrl()
     {
         return $this->url;
     }
@@ -53,49 +52,51 @@ class Photo
     /**
      * @return Collection|ModeleChaussure[]
      */
-    public function getModeles(): Collection
+    public function getModeleChaussure(): Collection
     {
-        return $this->modeles;
+        return $this->modeleChaussure;
     }
 
-    public function addModele(ModeleChaussure $modele): self
+    public function add(ModeleChaussure $modeleChaussure): self
     {
-        if (!$this->modeles->contains($modele)) {
-            $this->modeles[] = $modele;
-            $modele->setPhoto($this);
+        if (!$this->modeleChaussure->contains($modeleChaussure)) {
+            $this->modeleChaussure[] = $modeleChaussure;
+            $modeleChaussure->setPhoto($this);
         }
 
         return $this;
     }
 
-    public function removeModele(ModeleChaussure $modele): self
+    public function remove(ModeleChaussure $modeleChaussure): self
     {
-        if ($this->modeles->contains($modele)) {
-            $this->modeles->removeElement($modele);
+        if ($this->modeleChaussure->contains($modeleChaussure)) {
+            $this->modeleChaussure->removeElement($modeleChaussure);
             // set the owning side to null (unless already changed)
-            if ($modele->getPhoto() === $this) {
-                $modele->setPhoto(null);
+            if ($modeleChaussure->getPhoto() === $this) {
+                $modeleChaussure->setPhoto(null);
             }
         }
 
         return $this;
     }
 
-    public function getModeleChaussure(): ?ModeleChaussure
-    {
-        return $this->modeleChaussure;
-    }
 
-    public function setModeleChaussure(?ModeleChaussure $modeleChaussure): self
+    public function setModeleChaussure(?ModeleChaussure $modeleChaussure)
     {
         $this->modeleChaussure = $modeleChaussure;
 
         return $this;
     }
 
-    public function setUrl(string $string)
+    public function setUrl( $url)
     {
-       $this->url;
+        $this->url=$url;
         return $this;
     }
+
+
+
+
+
+
 }

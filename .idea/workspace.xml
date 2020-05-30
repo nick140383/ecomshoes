@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d3c0ef-120b-4ad1-8c7a-a7985e7b50bc" name="Default Changelist" comment="" />
+    <list default="true" id="77d3c0ef-120b-4ad1-8c7a-a7985e7b50bc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DetailChaussureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DetailChaussureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Photo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ModeleChaussureType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ModeleChaussureType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/detail_chaussure/nouvelle_chaussure.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/detail_chaussure/nouvelle_chaussure.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,11 +32,30 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="ecomshoesbd: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="ecomshoes" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -39,7 +66,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
@@ -142,18 +168,24 @@
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/ninsuo/symfony-collection" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-pack" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1a7o5z1wMKeOsNHvHhtIeT1392v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../asblEF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -162,6 +194,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -210,7 +243,27 @@
       <workItem from="1588332319970" duration="7190000" />
       <workItem from="1588451667837" duration="19265000" />
       <workItem from="1588509803486" duration="9614000" />
-      <workItem from="1588737395335" duration="3356000" />
+      <workItem from="1588737395335" duration="6365000" />
+      <workItem from="1588780112171" duration="587000" />
+      <workItem from="1588785459832" duration="1324000" />
+      <workItem from="1588840495204" duration="5192000" />
+      <workItem from="1588867060583" duration="5364000" />
+      <workItem from="1589026579478" duration="274000" />
+      <workItem from="1589723084506" duration="11178000" />
+      <workItem from="1589798849577" duration="16336000" />
+      <workItem from="1589906909714" duration="8534000" />
+      <workItem from="1589999409676" duration="16356000" />
+      <workItem from="1590059470839" duration="13527000" />
+      <workItem from="1590099865057" duration="18440000" />
+      <workItem from="1590153093069" duration="7552000" />
+      <workItem from="1590204888290" duration="30694000" />
+      <workItem from="1590320693741" duration="3988000" />
+      <workItem from="1590378553614" duration="5461000" />
+      <workItem from="1590419765988" duration="23089000" />
+      <workItem from="1590486831862" duration="41394000" />
+      <workItem from="1590583830762" duration="11080000" />
+      <workItem from="1590673306437" duration="3066000" />
+      <workItem from="1590864820174" duration="7020000" />
     </task>
     <servers />
   </component>
@@ -218,6 +271,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#SQL_Dialects" timestamp="1589808642192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1589808642192" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589801347931">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589801347931" />
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1587236029831">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -234,25 +295,53 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587597346606" />
+    <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1590102933846">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1590102933846" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588737480812">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588737480812" />
+    <state x="718" y="334" key="NewPhpClassDialog" timestamp="1590380247505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="718" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590380247505" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1590874131041">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590874131041" />
     <state width="519" height="446" key="SwitcherDM" timestamp="1586798031197">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="519" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1586798031197" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1588737393256">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1590864845639">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588737393256" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588841890755" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590864845639" />
     <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1586798119018">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586798119018" />
+    <state x="701" y="153" key="refactoring.ChangeSignatureDialog" timestamp="1590382598192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="153" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590382598192" />
     <state x="611" y="49" key="search.everywhere.popup" timestamp="1586901495134">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="611" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586901495134" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/detail_chaussure/nouvelle_chaussure.html.twig</url>
+          <line>35</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

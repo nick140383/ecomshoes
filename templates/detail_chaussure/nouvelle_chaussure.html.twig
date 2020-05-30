@@ -11,45 +11,57 @@
         {{ form_row(form.nom, {'label': 'Nom','attr': {'placeholder': 'nom de la chaussure...'}}) }}
         {{ form_row(form.prix, {'label': 'Prix','attr': {'placeholder': 'prix de la chaussure...'}}) }}
         {{ form_row(form.description, {'label': 'description', 'attr': {'placeholder': 'ajouter une description...'}}) }}
-
+        {{ form_row(form.description, {'label': 'Image de couverture', 'attr': {'placeholder': 'importez une image de couverture...'}}) }}
         {{ form_row(form.tailles, {'label': 'la taille', 'attr': {'placeholder': 'selectionnez une taille...'}}) }}
         {{ form_row(form.marque, {'label': 'Sélectionnez la marque', 'attr': {'placeholder' : 'Votre marque...'}})}}
 
-
+        <div class="form-group">
+            <button type="button" id="add-photo" class="btn btn-primary">Ajouter une image</button>
+        </div>
 
         {% block _modeleChaussure_photos_widget %}
    <p>Ici,vous pouvez ajouter vos propres photos!</p>
 
+
+
    {{ form_widget(form) }}
 
-   <div class="form-group">
-   <button type="button" id="add-photo" class="btn btn-primary">Ajouter une image</button>
-   </div>
-            </div>
+
 {{ form_end(form) }}
 {% endblock %}
+
 {% endblock %}
 
-       {% block _chaussure_entry_widget %}
-               <div class="form-group">
-                   <div class="row">
-                       {{ form_widget(form.url) }}
-                   </div>
-               </div>
-       {% endblock %}
 
+     {% block _chaussure_entry_widget %}
+     <div class="form-group" id="block_{{id}}">
+         <div class="row">
+             <div class="col-10">
+                 <div class="row">
+                     <div class="col">
+                         {{ form_widget(form.url) }}
+                     </div>
+
+                 </div>
+             </div>
+             <div class="col-2">
+                 <button type="button" class="btn-btn-danger">supprimer</button>
+             </div>
+         </div>
+
+     </div>
+     {% endblock %}
 
         {% block javascripts %}
 
             <script>
-                $(document).ready(function(){
+
                 $('#add-photo').click(function()
                 {
-                    const index = $('#chaussure_photos div.form-group');
-                    const tmpl= $('#chaussure_photos').data('prototype').replace(/_name_/g, index);
-                    console.log(tmpl);
-                //  $('#chaussure_photos').append(tmpl);
-                })
+                    const index = $('#modele_chaussure_photos div.form-group');
+                    const tmpl= $('#modele_chaussure_photos').data('prototype').replace(/_name_/g, index);
+                   
+                  $('#modele_chaussure_photos').append(tmpl);
                 });
             </script>
         {% endblock %}

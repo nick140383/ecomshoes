@@ -5,18 +5,19 @@ namespace App\Controller;
 use App\Entity\ModeleChaussure;
 use App\Entity\Photo;
 use App\Form\ModeleChaussureType;
-use App\Form\RegistrationType;
 use App\Repository\ClientRepository;
 use App\Repository\MarqueRepository;
 use App\Repository\ModeleChaussureRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
-use http\Client\Response;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+
 
 class DetailChaussureController extends AbstractController
 {
@@ -43,28 +44,102 @@ class DetailChaussureController extends AbstractController
     }
 
     /**
-     * @Route("/chaussure/new", name="chaussure_nouveau")
+     * @Route("/chaussure/new", name="chaussure_nouveau",methods={"GET","POST"})
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function create(Request $request, EntityManagerInterface $manager)
+    public function create(Request $request)
     {
-        $chaussure=new ModeleChaussure();
-
-        $photo=new Photo();
-
-      //  $photo->setUrl('http://placehold.it/400*200');
-
-        $photo2=new photo();
-
-      //  $photo2->setUrl('http://placehold.it/400*200');
-
-        $chaussure->addPhoto($photo);
-          $chaussure->addphoto($photo2);
+        $chaussure = new ModeleChaussure();
+     //  $manager = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(ModeleChaussureType::class, $chaussure);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            $file = $form->get('coverImage')->getData();
+
+
+      //  $photo1=new Photo();
+
+     //   $photo1->setUrl('photo1');
+       // $chaussure->getPhotos()->add($photo1);
+
+      //  $photo2=new Photo();
+      //  $chaussure->getPhotos() ->add($photo2);
+      //  $photo2->setUrl('photo2');
+
+    //    $chaussure->addPhoto($photo1);
+     //   $chaussure->addPhoto($photo2);
+      //  $manager->persist($photo1);
+       // $manager->persist($photo2);
+
+
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+
+            //on recupere les photos transmises
+      $photos=   $form->get('photos')->getData();
+            //on boucle sur les photos
+
+        //   $photos =$chaussure->getPhotos();
+
+           foreach($photos as $photo) {
+
+                //on genere un nouveau nom de fichier
+                $fileName =  md5(uniqid()) .'.'. $photo->guessExtension();
+                //on copie le fichier dans le dossier coverImage
+                $photo->move(
+                    $this->getParameter('coverImage_directory'),
+                    $fileName
+
+                );
+
+               $picture=new Photo();
+               $picture->setUrl($fileName);
+
+               $chaussure->addPhoto($picture);
+           }
+            //on stocke la photo dans la base de donnees
+
+
+
+
+/*
+            $file = $chaussure->getUrl();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            $chaussure->setUrl($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($chaussure);
+            $em->flush();
+
+
+
+         // $manager=$this->getDoctrine()->getManager();
+           $photos= $form->get('photos')->getData();
+            foreach ($photos as $photo) {
+                $fileName = md5(uniqid()) . '.' . $photo->getUrl()->guessExtension();
+                $photo->move($this->getParameter('coverImage_directory'), $fileName);
+                $photo->setUrl($fileName);
+
+            }
+     */
+
+
+/*
+       foreach($chaussure->getPhotos() as $photo)
+        {
+            $photo->setModeleChaussure($chaussure);
+            $chaussure->getPhotos()->add($photo);
+            $manager->persist($photo);
+
+        }
+            $manager->flush();
+*/
+       $file = $form->get('coverImage')->getData();
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             try{
                 $file->move(
@@ -75,8 +150,12 @@ class DetailChaussureController extends AbstractController
             catch (fileException $e){
 
             }
-          //  $manager=$this->getDoctrine()->getManager();
+
+
+
             $chaussure->setCoverImage($fileName);
+
+            $manager=$this->getDoctrine()->getManager();
             $manager->persist($chaussure);
             $manager->flush();
 
@@ -98,4 +177,3 @@ class DetailChaussureController extends AbstractController
         return md5(uniqid());
     }
 }
-
