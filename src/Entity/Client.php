@@ -242,7 +242,12 @@ class Client implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+
+        $roles=$this->userRoles->map(function($role){
+            return $role->getTitre();
+        })->toArray();
+      $roles[]='ROLE_USER';
+        return $roles;
     }
 
     /**

@@ -19,10 +19,10 @@ class ModeleChaussureRepository extends ServiceEntityRepository
         parent::__construct($registry, ModeleChaussure::class);
     }
 
-    // /**
-    //  * @return ModeleChaussure[] Returns an array of ModeleChaussure objects
-    //  */
-    /*
+    /**
+* @return ModeleChaussure[] Returns an array of ModeleChaussure objects
+     */
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('m')
@@ -34,7 +34,7 @@ class ModeleChaussureRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?ModeleChaussure

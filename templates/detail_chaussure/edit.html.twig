@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}creation d'une nouvelle chaussure!
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body%}
+    <div class="container">
+        <h1>Modification de la chaussure:{{ chaussure.getNom }}</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.nom, {'label': 'Nom','attr': {'placeholder': 'nom de la chaussure...'}}) }}
+        {{ form_row(form.prix, {'label': 'Prix','attr': {'placeholder': 'prix de la chaussure...'}}) }}
+        {{ form_row(form.description, {'label': 'description', 'attr': {'placeholder': 'ajouter une description...'}}) }}
+        {{ form_row(form.description, {'label': 'Image de couverture', 'attr': {'placeholder': 'importez une image de couverture...'}}) }}
+        {{ form_row(form.tailles, {'label': 'la taille', 'attr': {'placeholder': 'selectionnez une taille...'}}) }}
+        {{ form_row(form.marque, {'label': 'Sélectionnez la marque', 'attr': {'placeholder' : 'Votre marque...'}})}}
+
+
+    {#verifier si la route est "modeleChaussures_edit" on affiche les photos #}
+
+     {% if app.request.attributes.get('_route')=='modeleChaussures_edit' %}
+        <h3>
+            photo de couverture
+        </h3>
+        <div>
+      <img  src="/img/{{ chaussure.coverImage }}"
+        alt="photo" width="150">
+            <a href="{{path( 'chaussures_photo_supprime',{'id':chaussure.coverImage} )}}" data-delete data-token="{{ csrf_token('delete'~ chaussure.coverImage) }}">supprimer</a>
+        </div>
+        <h2>
+            Images
+        </h2>
+
+       <div>
+        {% for photo in chaussure.photos %}
+            <div>
+                <img src="/img/{{ photo.url }}" alt="Photo" width="150">
+                <a href="{{ path('chaussures_photo_supprime',{'id':photo.id}) }}" data-delete data-token="{{ csrf_token('delete'~ photo.id) }}">supprimer</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+  </div>
+
+<button type="submit" class="btn btn-primary">Modifiez lachaussure</button>
+
+
+    {{ form_end(form) }}
+
+
+  {% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+<script src="/js/{{ ('images.js') }}"></script>
+
+
+{% endblock %}

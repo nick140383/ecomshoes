@@ -18,7 +18,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <executable path="composer" />
     </execution>
   </component>
   <component name="DatabaseView">
@@ -32,23 +32,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="ecomshoesbd@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="ecomshoesbd: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FavoritesManager">
@@ -171,6 +155,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="1a7o5z1wMKeOsNHvHhtIeT1392v" />
@@ -185,7 +170,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../examen symfony2020" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -195,6 +180,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\documents yannick\UwAmp\www\ecomshoes\templates\admin" />
+      <recent name="D:\documents yannick\UwAmp\www\ecomshoes\templates\admin\account" />
+      <recent name="D:\documents yannick\UwAmp\www\ecomshoes\templates\admin\admin_modele_chaussure" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -263,7 +261,38 @@
       <workItem from="1590486831862" duration="41394000" />
       <workItem from="1590583830762" duration="11080000" />
       <workItem from="1590673306437" duration="3066000" />
-      <workItem from="1590864820174" duration="7020000" />
+      <workItem from="1590864820174" duration="11854000" />
+      <workItem from="1590925374034" duration="20747000" />
+      <workItem from="1591043750654" duration="14331000" />
+      <workItem from="1591092537808" duration="9412000" />
+      <workItem from="1591360253008" duration="25678000" />
+      <workItem from="1591453941116" duration="15826000" />
+      <workItem from="1591507110737" duration="49379000" />
+      <workItem from="1591625611100" duration="2380000" />
+      <workItem from="1591721114915" duration="26067000" />
+      <workItem from="1591819972779" duration="15037000" />
+      <workItem from="1591885632614" duration="18934000" />
+      <workItem from="1591962585534" duration="13949000" />
+      <workItem from="1592136373437" duration="10287000" />
+      <workItem from="1592225484322" duration="4794000" />
+      <workItem from="1592308689054" duration="8055000" />
+      <workItem from="1592968941998" duration="1408000" />
+      <workItem from="1593022109083" duration="284000" />
+      <workItem from="1593442674761" duration="1385000" />
+      <workItem from="1593513445080" duration="627000" />
+      <workItem from="1593606364908" duration="2452000" />
+      <workItem from="1593625543748" duration="35771000" />
+      <workItem from="1593694751412" duration="46779000" />
+      <workItem from="1593770209546" duration="22452000" />
+      <workItem from="1593856454561" duration="7381000" />
+      <workItem from="1593889709924" duration="5584000" />
+      <workItem from="1593945631812" duration="14882000" />
+      <workItem from="1594169359736" duration="618000" />
+      <workItem from="1594244247948" duration="602000" />
+      <workItem from="1594274202873" duration="13262000" />
+      <workItem from="1594379157981" duration="12468000" />
+      <workItem from="1594462709486" duration="9500000" />
+      <workItem from="1594551463476" duration="4552000" />
     </task>
     <servers />
   </component>
@@ -271,6 +300,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="667" y="110" key="#PHP" timestamp="1593634705603">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="110" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1593634705603" />
     <state x="552" y="178" key="#SQL_Dialects" timestamp="1589808642192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -279,6 +312,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589801347931" />
+    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591061222977">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591061222977" />
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1587236029831">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -291,18 +328,28 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588474705608" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587597346606">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593859255515">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587597346606" />
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593859255515" />
     <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1590102933846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1590102933846" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588737480812">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="736" y="433" key="ComposerInitDialogKey" timestamp="1593638242199">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="736" y="433" key="ComposerInitDialogKey/0.0.1920.1040@0.0.1920.1040" timestamp="1593638242199" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1593784020899">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1040@0.0.1920.1040" timestamp="1593784020899" />
+    <state x="651" y="170" key="FileChooserDialogImpl" timestamp="1593947494650">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588737480812" />
+    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593947494650" />
     <state x="718" y="334" key="NewPhpClassDialog" timestamp="1590380247505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -315,33 +362,27 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="519" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1586798031197" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1590864845639">
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1593445898374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588841890755" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590864845639" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593445898374" />
+    <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591401105759">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591401105759" />
     <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1586798119018">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586798119018" />
-    <state x="701" y="153" key="refactoring.ChangeSignatureDialog" timestamp="1590382598192">
+    <state x="701" y="153" key="refactoring.ChangeSignatureDialog" timestamp="1591472491790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="701" y="153" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590382598192" />
-    <state x="611" y="49" key="search.everywhere.popup" timestamp="1586901495134">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="701" y="153" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591472491790" />
+    <state x="859" y="70" width="672" height="678" key="search.everywhere.popup" timestamp="1592312372816">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="611" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586901495134" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/detail_chaussure/nouvelle_chaussure.html.twig</url>
-          <line>35</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="859" y="70" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592312372816" />
   </component>
 </project>

@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use http\Client\Curl\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ModeleChaussureRepository")
@@ -56,7 +58,8 @@ class ModeleChaussure
     private $marque;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo",cascade={"persist"},mappedBy="modeleChaussure")
+     * @ORM\OneToMany(targetEntity="App\Entity\Photo",cascade={"persist"},mappedBy="modeleChaussure",orphanRemoval=true)
+     * @Assert\NotNull
      */
     private $photos;
 
@@ -71,9 +74,20 @@ class ModeleChaussure
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
+     * @Assert\NotNull
      */
     private $coverImage;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Stock::class, mappedBy="modeleChaussure")
+     */
+    private $stocks;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCommande::class, mappedBy="modeleChaussure")
+     */
+    private $taille;
 
 
     public function __construct()
@@ -82,7 +96,9 @@ class ModeleChaussure
         $this->commandes = new ArrayCollection();
         $this->tailles = new ArrayCollection();
         $this->promotions = new ArrayCollection();
-       $this->photos = new ArrayCollection();
+        $this->photos = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
+        $this->taille = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -102,12 +118,12 @@ class ModeleChaussure
         return $this;
     }
 
-    public function getPrix(): ?string
+    public function getPrix()
     {
         return $this->prix;
     }
 
-    public function setPrix(string $prix): self
+    public function setPrix($prix)
     {
         $this->prix = $prix;
 
@@ -278,13 +294,10 @@ class ModeleChaussure
         return $this;
     }
 
-
-
-
-    public function setPhoto(photo $photos)
+    public function setPhoto(photo $photo)
     {
-        $this->$photos;
-        return $this;
+        $this->$photo;
+         return  $this;
     }
 
     public function getPhoto(): ?photo
@@ -304,17 +317,86 @@ class ModeleChaussure
         return $this;
     }
 
-    public function getCoverImage(): ?string
+    public function getCoverImage()
     {
         return $this->coverImage;
     }
 
-    public function setCoverImage(string $coverImage): self
+    public function setCoverImage($coverImage)
     {
         $this->coverImage = $coverImage;
 
         return $this;
     }
 
+    /**
+     * permet de recuperer le commentaire d'un  auteur par rapport à une annonce
+     *
+     * @param User $client
+     * @return Commentaire
+     */
 
+    public function getCommentaireFromClient( $client){
+        foreach($this->commentaires as $comment)
+        {
+          if($comment->getClient() === $client) return $comment;
+        }
+        return  null;
+
+    }
+
+    /**
+     * permet d'obtenir la moyenne globale des notes pour cette annonce
+     *
+     * @return float
+     */
+
+    public function getAvgRatings(){
+        //calculer la somme des notations
+        $sum=array_reduce($this->commentaires->toArray(), function($total,$comment){
+            return $total+$comment->getRating();
+        }, 0);
+//faire la division pour avoir la moyenne
+        if(count($this->commentaires)>0) return $sum/count($this->commentaires);
+        return 0;
+    }
+
+    /**
+     * @return Collection|Stock[]
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): self
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks[] = $stock;
+            $stock->setModeleChaussure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): self
+    {
+        if ($this->stocks->contains($stock)) {
+            $this->stocks->removeElement($stock);
+            // set the owning side to null (unless already changed)
+            if ($stock->getModeleChaussure() === $this) {
+                $stock->setModeleChaussure(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCommande[]
+     */
+    public function getTaille(): Collection
+    {
+        return $this->taille;
+    }
 }

@@ -10,6 +10,7 @@ use App\Form\RegistrationType;
 use App\Repository\ClientRepository;
 use App\Repository\MarqueRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,8 +31,13 @@ class AccountController extends AbstractController
         $this->marqueRepository = $marqueRepository;
         $this->clientRepository=$clientRepository;
     }
+
     /**
      * @Route("/registration", name="account_registration")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -60,6 +66,8 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/login", name="account_login")
+     * @param AuthenticationUtils $utils
+     * @return Response
      */
     public function login(AuthenticationUtils $utils)
     {
@@ -82,7 +90,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/profile", name="account_profile")
-     *
+     * @IsGranted("ROLE_USER")
      * @return Response
      */
     public function profile(Request $request, EntityManagerInterface $manager)
@@ -109,7 +117,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/updatePassword", name="account_password")
-     *
+     * @IsGranted("ROLE_USER")
      * @return Response
      */
     public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)

@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html >
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
 
 
 
 
 
-        {% block stylesheets %}
+    {% block stylesheets %}
 
 
-        {% endblock %}
+    {% endblock %}
 
-    </head>
-    <body>
+</head>
+<body>
 
-    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
 
 
 
 {% include'partials/header.html.twig' %}
-    </body>
-    {% block body %}{% endblock %}
-    {% include'partials/footer.html.twig' %}
+</body>
+{% block body %}{% endblock %}
+{% include'partials/footer.html.twig' %}
 
 
 
 
 
 
-    {% block javascripts %}
+{% block javascripts %}
+    <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/2e75c5cb4f.js"></script>
 
-
-    {% endblock %}
-    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
-    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://bootswatch.com/_assets/js/custom.js"></script>
+{% endblock %}
+<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://bootswatch.com/_assets/js/custom.js"></script>
 
 </html>

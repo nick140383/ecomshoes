@@ -14,16 +14,18 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url' ,FileType::class,[
+            ->add('url' ,FileType::class)
+
                // 'multiple'=>true,
-               ])
-             //   'data_class' => Object_::class,
-               //  'mapped' => false,
+
+          //     'data_class' => Object_::class)
+                 //'mapped' => false,
               //  'allow_file_upload'=>true,
 
          //  ->setMethod("POST");
 
-        ->setMethod("POST");
+       ->setMethod("POST")
+        ;
 
     }
 

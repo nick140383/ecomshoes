@@ -14,11 +14,15 @@
     <div class="col-md-4">
         <div class="card-header text-center">
             <a href="/detail/chaussure/{{ modeleChaussure.id }}">{{ modeleChaussure.nom }}  </a>, <strong>{{ modeleChaussure.prix }}&euro;</strong><br>
-            <small>pas encore noté</small>
+        {% if modeleChaussure.commentaires|length>0 %}
+            {% include 'partials/rating.html.twig' with {'rating':modeleChaussure.avgRatings} %}
+            {% else %}
+                <small>Pas encore noté</small>
+                {% endif %}
         </div>
         <a href="{{ path('detail_chaussure',{'id':modeleChaussure.id}) }}">
             <img src="/img/{{ modeleChaussure.coverImage }}" alt="Image de la chaussure"
-                 style="height:200px;width:100%;display:block"/>
+                 style="height:200px;width:60%;display:block"/>
         </a>
 
         <div class="card-body">
@@ -30,9 +34,9 @@
             </p>
             <a href="{{ path('detail_chaussure',{'id':modeleChaussure.id}) }} " class="btn btn-secondary">en savoir plus!</a>
 
+
         </div>
     </div>
-
     {% endfor %}
         </div>
 {% endblock %}

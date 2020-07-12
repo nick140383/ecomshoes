@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommandeRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Commande
 {
@@ -56,16 +57,28 @@ class Commande
      */
     private $modeleChaussures;
 
+    public function prePersist(){
+        if(empty($this->dateCommande)){
+            $this->dateCommande=new \DateTime();
+        }
+    }
+
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Taille", inversedBy="commandes")
      */
     private $tailles;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCommande::class, mappedBy="commande")
+     */
+    private $ligneCommandes;
 
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->modeleChaussures = new ArrayCollection();
         $this->tailles = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -210,6 +223,37 @@ class Commande
     {
         if ($this->tailles->contains($taille)) {
             $this->tailles->removeElement($taille);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneCommande[]
+     */
+    public function getLigneCommandes(): Collection
+    {
+        return $this->ligneCommandes;
+    }
+
+    public function addLigneCommande(LigneCommande $ligneCommande): self
+    {
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes[] = $ligneCommande;
+            $ligneCommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
+    {
+        if ($this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes->removeElement($ligneCommande);
+            // set the owning side to null (unless already changed)
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
+            }
         }
 
         return $this;

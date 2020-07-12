@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}creation d'une nouvelle chaussure!{% endblock %}
+{% block title %}creation d'une nouvelle chaussure!
+{% endblock %}
 
 {% form_theme form _self %}
 
 {% block body%}
     <div class="container">
         <h1>Créer une nouvelle chaussure</h1>
+
         {{ form_start(form) }}
         {{ form_row(form.nom, {'label': 'Nom','attr': {'placeholder': 'nom de la chaussure...'}}) }}
         {{ form_row(form.prix, {'label': 'Prix','attr': {'placeholder': 'prix de la chaussure...'}}) }}
@@ -17,53 +19,17 @@
 
         <div class="form-group">
             <button type="button" id="add-photo" class="btn btn-primary">Ajouter une image</button>
-        </div>
-
-        {% block _modeleChaussure_photos_widget %}
-   <p>Ici,vous pouvez ajouter vos propres photos!</p>
 
 
 
-   {{ form_widget(form) }}
+        {{ form_end(form) }}
 
 
-{{ form_end(form) }}
+    </div>    {#verifier si la route est "modeleChaussures_edit" on affiche les photos #}
+
+    <p>Ici,vous pouvez ajouter vos propres photos!</p>
+
+
 {% endblock %}
 
-{% endblock %}
-
-
-     {% block _chaussure_entry_widget %}
-     <div class="form-group" id="block_{{id}}">
-         <div class="row">
-             <div class="col-10">
-                 <div class="row">
-                     <div class="col">
-                         {{ form_widget(form.url) }}
-                     </div>
-
-                 </div>
-             </div>
-             <div class="col-2">
-                 <button type="button" class="btn-btn-danger">supprimer</button>
-             </div>
-         </div>
-
-     </div>
-     {% endblock %}
-
-        {% block javascripts %}
-
-            <script>
-
-                $('#add-photo').click(function()
-                {
-                    const index = $('#modele_chaussure_photos div.form-group');
-                    const tmpl= $('#modele_chaussure_photos').data('prototype').replace(/_name_/g, index);
-                   
-                  $('#modele_chaussure_photos').append(tmpl);
-                });
-            </script>
-        {% endblock %}
-
-
+{% block javascripts %}{% endblock %}

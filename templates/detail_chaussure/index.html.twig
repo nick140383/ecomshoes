@@ -8,7 +8,7 @@
 <div class="row">
         <img class="fit-picture"
              src="/img/{{ chaussure.coverImage }}"
-             alt="nike">
+             alt="nike" width="50">
 
         <div class="card-text">
             <h1>{{ chaussure.nom }}</h1>
@@ -16,7 +16,7 @@
             <p class="h2">
                 <strong>1 piece pour</strong><strong>{{ chaussure.prix }}&euro;</strong>
             </p>
-            <a href="#" class="btn btn-primary">Ajouter au panier!</a>
+            <a href="{{ path('panier_add',{'id':chaussure.id}) }}" class="btn btn-success float-right"><i class="fas fa-shopping-cart mr-1"></i> Ajouter au panier!</a>
 </div>
     <div id="carouselExampleIndicators" class="carousel slide"
          data-ride="carousel">
@@ -30,7 +30,7 @@
         <div class="carousel-inner">
             {% for photo in chaussure.Photos %}
                 <div class="carousel-item {% if loop.first %}active{% endif %}">
-                    <img class="d-block w-100" src="/img/{{photo.url}}" alt="first slide">
+                    <img class="d-block w-100" src="/img/{{photo.url}}" alt="first slide" width="50">
                 </div>
             {% endfor %}
         </div>
@@ -43,6 +43,83 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+    <section class="commentaires">
+        <h1>
+            Commentaires :
+        </h1>
+        {% set commentaire = chaussure.commentaireFromClient(app.user)%}
+        {% if commentaire is not null %}
+            <blockquote>
+                {{ commentaire.commentaire }}
+            </blockquote>
+            <strong>Note:</strong>{% include 'partials/rating.html.twig' with {'rating':commentaire.rating} %}
+        {% endif %}
+        {% if chaussure.commentaires|length > 0 %}
+
+        <h2 class="mb-3">commentaires des clients:</h2>
+        <div class="alert alert-info">
+            <h4 class="alert-heading text-center">
+                <div class="row align-items-center">
+                    <div class="col">
+                        Note globale donnée par nos clients
+                    </div>
+                    <div class="col">
+                        {% include 'partials/rating.html.twig' with {'rating':
+                        chaussure.avgRatings} %}
+                        <br>
+                        <small>(calculée sur {{ chaussure.commentaires|length }} avis)</small>
+                    </div>
+                </div>
+            </h4>
+        </div>
+
+        {% for comment in chaussure.commentaires %}
+
+            <div class="bg-light rounded mb-3 py-3 px-3">
+                <blockquote>
+
+                    (<small>{{ comment.dateCommentaire | date('d/m/Y à H:i') }}</small>)
+
+                </blockquote>
+             <strong>   {{ comment.getClient().getNom() }} </strong> a dit:
+             <blockquote>
+             {{ comment.commentaire }}
+</blockquote>
+            <strong>Note donnée:</strong>
+            {% include 'partials/rating.html.twig' with {'rating':
+            comment.rating} %}
+
+                    </div>
+
+
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% if app.user %}
+            {% set comment = chaussure.commentaireFromClient(app.user)%}
+            {% if comment is not null %}
+                <blockquote>
+                    {{ comment.commentaire }}
+                </blockquote>
+                <strong>Note:</strong>{% include 'partials/rating.html.twig' with {'rating':comment.rating} %}
+            {% else %}
+        {{ form_start(commentForm) }}
+        {{ form_row(commentForm.commentaire,{}) }}
+        {{ form_row(commentForm.rating,{}) }}
+        <button type="submit" class="btn btn-success">Commenter</button>
+        {{ form_end(commentForm) }}
+            {% endif %}
+        {% else %}
+        <h2>Vous ne pouvez pas commenter si vous n'êtes pas connecté</h2>
+            <a href="{{ path('account_login') }}" class="btn btn-primary">connexion</a>
+        {% endif %}
+
+
+
+    </section>
 </div>
 
 

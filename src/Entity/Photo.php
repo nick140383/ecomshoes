@@ -23,13 +23,14 @@ class Photo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $url;
+    public $url;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ModeleChaussure", inversedBy="photos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $modeleChaussure;
+    private $photo_class;
 
 
     public function __construct()
@@ -96,6 +97,12 @@ class Photo
 
 
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+       return $this->url;
+       // return $this->photo_class;
+    }
 
 
 

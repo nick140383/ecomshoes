@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des chaussures!{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="my-5">Gestion des modeles chaussures</h1>
+    <table class="table table-hover">
+        <thread>
+            <tr>
+                <th>Id</th>
+                <th>nom</th>
+                <th>prix</th>
+                <th>description</th>
+                <th>Actions</th>
+
+                <th></th>
+            </tr>
+        </thread>
+        <tbody>
+        {% for modeleChaussure in modeleChaussures %}
+            <tr>
+                <td>{{  modeleChaussure.id }}</td>
+                <td>{{  modeleChaussure.nom }}</td>
+                <td>{{  modeleChaussure.prix }}</td>
+                <td>{{  modeleChaussure.description }}</td>
+                <td>
+                    <a href="{{ path('modeleChaussures_edit',{'id':modeleChaussure.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

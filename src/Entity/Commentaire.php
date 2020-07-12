@@ -45,9 +45,24 @@ class Commentaire
      */
     private $commandes;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rating;
+    /**
+     * @var ArrayCollection
+     */
+
+
+    /**
+     * @var ArrayCollection
+     */
+
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -55,12 +70,12 @@ class Commentaire
         return $this->id;
     }
 
-    public function getCommentaire(): ?string
+    public function getCommentaire()
     {
         return $this->commentaire;
     }
 
-    public function setCommentaire(string $commentaire): self
+    public function setCommentaire( $commentaire)
     {
         $this->commentaire = $commentaire;
 
@@ -79,12 +94,12 @@ class Commentaire
         return $this;
     }
 
-    public function getClient(): ?Client
+    public function getClient()
     {
         return $this->client;
     }
 
-    public function setClient(?Client $client): self
+    public function setClient( $client)
     {
         $this->client = $client;
 
@@ -128,4 +143,17 @@ class Commentaire
 
         return $this;
     }
+
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    public function setRating( $rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
 }

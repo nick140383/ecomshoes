@@ -3,7 +3,10 @@
 namespace App\Form;
 use App\Entity\Marque;
 use App\Entity\ModeleChaussure;
+use App\Entity\Photo;
 use App\Entity\Taille;
+use Symfony\Component\Validator\Constraints\Url;
+//use http\Url;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -23,10 +26,17 @@ class ModeleChaussureType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prix',MoneyType::class)
             ->add('description', TextareaType::class)
-         ->add('coverImage',FileType::class,array('label'=>'importez une image de couverture'
+         ->add('coverImage',FileType::class,array(
+             'label'=>'importez une image de couverture',
+           //      'mapped'=>false,
+
+             )
 
 
-           ))
+         )
+
+            ->setMethod("POST")
+
             ->add('tailles', EntityType::class, [
                 'class' => Taille::class,
                 'choice_label' => 'taille',
@@ -41,20 +51,15 @@ class ModeleChaussureType extends AbstractType
           ->add(
                'photos',
 
-               FileType::class, array(
-                 //   'entry_type' => PhotoType::class,
-                 // 'allow_add'=>true,
-             //  'entry_options' => ['label' => false],
-              // 'prototype' => true,
-              // 'by_reference' => false,
-              // 'data_class' => null,
+               FileType::class,[
 
-                 'multiple' => true,
-              // 'allow_file_upload'=>true,
+              'by_reference' => true,
+                  'multiple' => true,
+                   //'data_class'=>true,
                    'mapped'=>false,
-              //     'required'=>false,
+                 'required'=>false,]
 
-       ))
+       )
 
       //*  ->add('photos', CollectionType::class, [
           //   'entry_type' => PhotoType::class,
@@ -67,13 +72,13 @@ class ModeleChaussureType extends AbstractType
      //    ])
 
 
-            ->add('Ajouter une nouvelle chaussure',SubmitType::class,[
+      ->add('Ajouter une nouvelle chaussure',SubmitType::class,[
                 'attr'=>[
-                    'class'=>'btn btn-success'
+                   'class'=>'btn btn-success'
                 ]
-            ])
+           ])
 
-        ;
+     ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
