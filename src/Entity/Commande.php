@@ -41,7 +41,7 @@ class Commande
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Livraison", inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Livraison", cascade={"persist"},inversedBy="commandes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $livraison;

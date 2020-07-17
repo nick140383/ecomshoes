@@ -170,7 +170,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../examen symfony2020" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -292,7 +292,14 @@
       <workItem from="1594274202873" duration="13262000" />
       <workItem from="1594379157981" duration="12468000" />
       <workItem from="1594462709486" duration="9500000" />
-      <workItem from="1594551463476" duration="4552000" />
+      <workItem from="1594551463476" duration="5733000" />
+      <workItem from="1594611821802" duration="1443000" />
+      <workItem from="1594642364456" duration="4336000" />
+      <workItem from="1594728872461" duration="598000" />
+      <workItem from="1594807531229" duration="961000" />
+      <workItem from="1594895893475" duration="63000" />
+      <workItem from="1594933951096" duration="16955000" />
+      <workItem from="1594987395592" duration="594000" />
     </task>
     <servers />
   </component>
