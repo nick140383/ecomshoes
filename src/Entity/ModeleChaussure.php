@@ -42,7 +42,7 @@ class ModeleChaussure
     private $commandes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Taille", inversedBy="modeleChaussures")
+     * @ORM\OneToMany(targetEntity="App\Entity\Taille", mappedBy="modeleChaussures")
      */
     private $tailles;
 

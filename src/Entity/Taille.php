@@ -24,7 +24,7 @@ class Taille
     private $taille;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ModeleChaussure", mappedBy="tailles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ModeleChaussure", inversedBy="tailles")
      */
     private $modeleChaussures;
 

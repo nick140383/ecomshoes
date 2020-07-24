@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commande
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -36,7 +37,7 @@ class Commande
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="client_id", nullable=false)
      */
     private $client;
 

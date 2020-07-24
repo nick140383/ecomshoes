@@ -11,16 +11,17 @@
     </div>
     {% if items| length > 0 %}
         <table class="table">
-       <thead>
-       <tr>
-           <th>Produit</th>
-           <th>Prix</th>
-           <th>Quantité</th>
-           <th>Total</th>
-           <th></th>
+            <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Taille</th>
+                <th>Total</th>
+                <th></th>
 
-       </tr>
-       </thead>
+            </tr>
+            </thead>
             <tbody>
             {% for item in items%}
                 <tr>
@@ -28,6 +29,7 @@
                     <td>{{ item.chaussure.prix}}</td>
 
                     <td>{{ item.quantite}}</td>
+                    <td>{{ item.taille}}</td>
                     <td>{{ item.chaussure.prix * item.quantite }}</td>
                     <td>
                         <a href="{{ path('panier_remove',{'id':item.chaussure.id}) }}" class="btn btn-danger btn-sm">

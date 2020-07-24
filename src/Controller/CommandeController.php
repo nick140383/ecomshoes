@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controller;
-use Illuminate\Database\Eloquent\Model;
+use App\Entity\Stock;
+use App\Entity\Taille;
+use Carbon\Carbon;
+
 
 use App\Entity\Client;
 use App\Entity\Livraison;
@@ -15,16 +18,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
 {
+
+
     /**
      * @Route("/commande", name="commande")
+     * @throws \Exception
      */
     public function index(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        if($this->getUser()==null){
+        if ($this->getUser() == null) {
             return $this->redirectToRoute("account_login");
-        }
-        else {
+        } else {
             // $session = $this->get('request_stack')->getCurrentRequest()->getSession();
             $session = $request->getSession();
             $commande = new Commande();
@@ -34,7 +39,7 @@ class CommandeController extends AbstractController
             }
 
             $panier = $session->get('panier');
-
+            $taille = $session->get('taille');
 
 
             $chaussures = $em->getRepository(ModeleChaussure::class)
@@ -57,25 +62,51 @@ class CommandeController extends AbstractController
 
                 $ligne = new LigneCommande();
                 $ligne->setQuantite($panier[$chaussure->getId()]);
+//                $chaussure->setQuantite(($chaussure->getQuantite()) - ($panier[$chaussure->getId()]));
                 $ligne->setModeleChaussure($chaussure);
                 $ligne->setCommande($commande);
                 $ligne->setPrix($totalU);
+
+                if (isset($taille[$chaussure->getId()])) {
+                    $tail = $em->getRepository(Taille::class)->find($taille[$chaussure->getId()]);
+                    if ($tail) {
+                        $ligne->setTaille($tail);
+                        $stock = $em->getRepository(Stock::class)->findOneBy(array('modeleChaussure' => $chaussure, 'taille' => $tail));
+                        if ($stock) {
+                            $stock->setQuantite($stock->getQuantite() - $panier[$chaussure->getId()]);
+                            $em->persist($stock);
+                        }
+                    }
+                }
                 $em->persist($ligne);
             }
-$user=$this->getUser();
+
+            $user = $this->getUser();
             $commande->setMontantLigne($totalNet);
             $commande->setDateCommande(new \DateTime());
             $commande->setClient($this->getUser());
-            $adress=$user->getAdresse();
-            $ville=$user->getVille();
-            $livraison=new Livraison();
+            $adress = $user->getAdresse();
+            $ville = $user->getVille();
+            $livraison = new Livraison();
             $livraison->setAdresse($adress);
             $livraison->setVille($ville);
-            $startDate = Carbon::now();
-            $endDate   = Carbon::now()->subDays(7);
-            $randomDate = Carbon::createFromTimestamp(Rand($endDate->timestamp, $startDate->timestamp))->format('Y-m-d');
-            $livraison->setDateLivraison($randomDate);
-           // $livraison = $this->getDoctrine()->getRepository('App\Entity\Livraison')->find($adress);
+          //  Convert the supplied date to timestamp
+//$fMin = strtotime($sStartDate);
+//$fMax = strtotime($sEndDate);
+
+// Generate a random number from the start and end dates
+//$fVal = mt_rand($fMin, $fMax);
+
+// Convert back to the specified date format
+//return date($sFormat, $fVal);
+
+            $start_date = date('Y-m-d');
+            $end_date = date("Y-m-d", strtotime("+7 day", strtotime($start_date)));
+            $randomDate = $this->randomDate($start_date,$end_date);
+            $livraison->setDateLivraison(new \DateTime($randomDate));
+
+            $livraison->setDateLivraison(new \DateTime($randomDate));
+            // $livraison = $this->getDoctrine()->getRepository('App\Entity\Livraison')->find($adress);
 
             $commande->setLivraison($livraison);
             $mode_paiement = $this->getDoctrine()->getRepository('App\Entity\ModePaiement')->find(1);
@@ -84,9 +115,27 @@ $user=$this->getUser();
             $em->persist($commande);
             $em->flush();
             $session->remove('panier');
-            $request->getSession()->getFlashBag()->add('success', 'Commande validée avec succès');
+          //  $request->getSession()->getFlashBag()->add('success', 'Commande validée avec succès');
+            $this->addFlash('success',
+                "Merci<strong class='text-danger'>{$user->getNom()}</strong> Commande validée avec succès
+");
 
-            return $this->redirectToRoute('panier_index');
+            return $this->redirectToRoute( 'home');
         }
+
     }
+    function randomDate($sStartDate, $sEndDate, $sFormat = 'Y-m-d H:i:s')
+    {
+// Convert the supplied date to timestamp
+        $fMin = strtotime($sStartDate);
+        $fMax = strtotime($sEndDate);
+
+// Generate a random number from the start and end dates
+        $fVal = mt_rand($fMin, $fMax);
+
+// Convert back to the specified date format
+        return date($sFormat, $fVal);
+    }
+
+
 }

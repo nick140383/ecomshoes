@@ -27,8 +27,9 @@ class ModeleChaussureType extends AbstractType
             ->add('prix',MoneyType::class)
             ->add('description', TextareaType::class)
          ->add('coverImage',FileType::class,array(
-             'label'=>'importez une image de couverture',
+             'label'=>'upload coverImage',
            //      'mapped'=>false,
+                 'data_class'=>null
 
              )
 
@@ -40,7 +41,7 @@ class ModeleChaussureType extends AbstractType
             ->add('tailles', EntityType::class, [
                 'class' => Taille::class,
                 'choice_label' => 'taille',
-                'multiple' => true
+               'multiple' => true
             ])
             ->add('marque',EntityType::class,[
                 'class'=>Marque::class,
@@ -52,10 +53,11 @@ class ModeleChaussureType extends AbstractType
                'photos',
 
                FileType::class,[
+                  'label'=>'upload others pictures',
 
               'by_reference' => true,
                   'multiple' => true,
-                   //'data_class'=>true,
+                   'data_class'=>null,
                    'mapped'=>false,
                  'required'=>false,]
 

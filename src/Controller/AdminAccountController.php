@@ -10,6 +10,8 @@ class AdminAccountController extends AbstractController
 {
     /**
      * @Route("/admin/login", name="admin_account_login")
+     * @param AuthenticationUtils $utils
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login(AuthenticationUtils $utils)
 {

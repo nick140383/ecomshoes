@@ -6,6 +6,8 @@ use App\Entity\Client;
 use App\Entity\Commentaire;
 use App\Entity\ModeleChaussure;
 use App\Entity\Photo;
+use App\Entity\Stock;
+use App\Entity\Taille;
 use App\Form\CommentaireType;
 use App\Form\ModeleChaussureType;
 use App\Repository\ClientRepository;
@@ -57,8 +59,8 @@ class DetailChaussureController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $comment->setDateCommentaire(new \DateTime())
-                    ->setModele($chaussure)
-                    ->setClient($this->getUser());
+                ->setModele($chaussure)
+                ->setClient($this->getUser());
             $manager->persist($comment);
             $manager->flush();
             $this->addFlash(
@@ -68,20 +70,31 @@ class DetailChaussureController extends AbstractController
 
 
         }
+
+        $taille = $this->getDoctrine()->getRepository(Taille::class)->findAll();
+        $stocks = $this->getDoctrine()->getRepository(Stock::class)->findBy(array('modeleChaussure' => $chaussure));
+        $stocksArr = array();
+        foreach ($stocks as $stock) {
+            $stocksArr = array($stock->getTaille()->getId() => $stock->getQuantite());
+        }
+
         return $this->render('detail_chaussure/index.html.twig', [
-            'chaussure' => $chaussure,'list'=>$list,'commentForm'=>$form->createView()
+            'chaussure' => $chaussure,'list'=>$list,'commentForm'=>$form->createView(),
+            'taille' => $taille,
+            'stocksArr' => $stocksArr
         ]);
     }
 
     /**
      * @Route("/chaussure/new", name="chaussure_nouveau",methods={"GET","POST"})
      * @param Request $request
+     * @param EntityManagerInterface $manager
      * @return Response
      */
     public function create(Request $request,EntityManagerInterface $manager)
     {
         $chaussure = new ModeleChaussure();
-      $manager = $this->getDoctrine()->getManager();
+        $manager = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(ModeleChaussureType::class, $chaussure);
         $form->handleRequest($request);
@@ -107,12 +120,12 @@ class DetailChaussureController extends AbstractController
             $manager->flush();
 
             //on recupere les photos transmises
-      $photos=   $form->get('photos')->getData();
+            $photos=   $form->get('photos')->getData();
             //on boucle sur les photos
 
-        //   $photos =$chaussure->getPhotos();
+            //   $photos =$chaussure->getPhotos();
 
-           foreach($photos as $photo) {
+            foreach($photos as $photo) {
 
                 //on genere un nouveau nom de fichier
                 $fileName =  md5(uniqid()) .'.'. $photo->guessExtension();
@@ -123,16 +136,16 @@ class DetailChaussureController extends AbstractController
 
                 );
 
-               $picture=new Photo();
-               $picture->setUrl($fileName);
+                $picture=new Photo();
+                $picture->setUrl($fileName);
 
-               $chaussure->addPhoto($picture);
-           }
+                $chaussure->addPhoto($picture);
+            }
             //on stocke la photo dans la base de donnees
-$this->getDoctrine()->getManager()->flush();
-$manager=$this->getDoctrine()->getManager();
-$manager->persist($chaussure);
-$manager->flush();
+            $this->getDoctrine()->getManager()->flush();
+            $manager=$this->getDoctrine()->getManager();
+            $manager->persist($chaussure);
+            $manager->flush();
 
 
 
@@ -154,7 +167,6 @@ $manager->flush();
 
     /**
      * @Route("/detail/chaussure/{id}/edit" ,name="modeleChaussures_edit",methods={"GET","POST"})
-     *
      * @param ModeleChaussure $chaussure
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -168,51 +180,51 @@ $manager->flush();
         if ($form->isSubmitted() && $form->isValid())
         {
             $this->getDoctrine()->getManager()->flush();
-                //on recupere les photos transmises
-                $photos = $form->get('photos')->getData();
-                //on boucle sur les photos
+            //on recupere les photos transmises
+            $photos = $form->get('photos')->getData();
+            //on boucle sur les photos
 
-                //   $photos =$chaussure->getPhotos();
+            //   $photos =$chaussure->getPhotos();
 
-                foreach ($photos as $photo) {
+            foreach ($photos as $photo) {
 
-                    //on genere un nouveau nom de fichier
-                    $fileName = md5(uniqid()) . '.' . $photo->guessExtension();
-                    //on copie le fichier dans le dossier coverImage
-                    $photo->move(
-                        $this->getParameter('coverImage_directory'),
-                        $fileName
+                //on genere un nouveau nom de fichier
+                $fileName = md5(uniqid()) . '.' . $photo->guessExtension();
+                //on copie le fichier dans le dossier coverImage
+                $photo->move(
+                    $this->getParameter('coverImage_directory'),
+                    $fileName
 
-                    );
+                );
 
-                    $picture = new Photo();
-                    $picture->setUrl($fileName);
+                $picture = new Photo();
+                $picture->setUrl($fileName);
 
-                    $chaussure->addPhoto($picture);
-                }
-                $this->getDoctrine()->getManager()->flush();
-
-
-
-
-
-
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($chaussure);
-                $manager->flush();
-                $this->getDoctrine()->getManager()->flush();
-
-                $this->addFlash('success',
-                    "Bravo <strong class='text-danger'>{$chaussure->getNom()}</strong> Modification reussie");
-                return $this->redirectToRoute('home');
+                $chaussure->addPhoto($picture);
             }
-            $list = $this->marqueRepository->findAll();
+            $this->getDoctrine()->getManager()->flush();
 
-            return $this->render('detail_chaussure/edit.html.twig', ['form' => $form->createView(),
-                'list' => $list,
-                'chaussure' => $chaussure
-            ]);
+
+
+
+
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($chaussure);
+            $manager->flush();
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success',
+                "Bravo <strong class='text-danger'>{$chaussure->getNom()}</strong> Modification reussie");
+            return $this->redirectToRoute('home');
         }
+        $list = $this->marqueRepository->findAll();
+
+        return $this->render('detail_chaussure/edit.html.twig', ['form' => $form->createView(),
+            'list' => $list,
+            'chaussure' => $chaussure
+        ]);
+    }
 
 
     /**
@@ -237,14 +249,16 @@ $manager->flush();
             $manager->flush();
             //on repond en json
             return new JsonResponse(['success' => 1]);
-            }
-             else {
-                 return new JsonResponse(['error'=>'Token Invalide'],400);
-             }
+        }
+        else {
+            return new JsonResponse(['error'=>'Token Invalide'],400);
+        }
 
 
 
     }
+
+
 
     private function generateUniqueFileName()
     {

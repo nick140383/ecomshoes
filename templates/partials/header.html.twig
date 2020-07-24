@@ -7,14 +7,27 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="{{ path('chaussure_nouveau') }}">add new shoe</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="{{ path('stock_add') }}">add new stock</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href=" /stock/{id}/edit ">update stock</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('panier_index') }}">Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {{ path('admin_modele_chaussure') }}">admin managing shoes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('facture_pdf') }}">
+                    <i class=""></i>
+                    download bill</a>
+            </li>
+
+
         </ul>
         <ul class="navbar-nav mr-auto">
 

@@ -136,7 +136,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
       <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
-      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
@@ -156,6 +155,14 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/spipu/html2pdf" />
+      <path value="$PROJECT_DIR$/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
     </include_path>
   </component>
   <component name="ProjectId" id="1a7o5z1wMKeOsNHvHhtIeT1392v" />
@@ -170,7 +177,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ecommerce" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -299,7 +306,17 @@
       <workItem from="1594807531229" duration="961000" />
       <workItem from="1594895893475" duration="63000" />
       <workItem from="1594933951096" duration="16955000" />
-      <workItem from="1594987395592" duration="1187000" />
+      <workItem from="1594987395592" duration="3539000" />
+      <workItem from="1595046089737" duration="6142000" />
+      <workItem from="1595055676160" duration="12733000" />
+      <workItem from="1595131681805" duration="588000" />
+      <workItem from="1595140186239" duration="1713000" />
+      <workItem from="1595251018333" duration="28810000" />
+      <workItem from="1595328704680" duration="10466000" />
+      <workItem from="1595345871344" duration="1456000" />
+      <workItem from="1595520184692" duration="7791000" />
+      <workItem from="1595530928952" duration="21497000" />
+      <workItem from="1595590539822" duration="12667000" />
     </task>
     <servers />
   </component>
@@ -319,10 +336,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589801347931" />
-    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591061222977">
+    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595270544546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591061222977" />
+    <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595270544546" />
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1587236029831">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -335,11 +352,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588474705608" />
-    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593859255515">
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595602443407">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587597346606" />
-    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593859255515" />
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595602443407" />
     <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1590102933846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -352,36 +369,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1040@0.0.1920.1040" timestamp="1593784020899" />
-    <state x="651" y="170" key="FileChooserDialogImpl" timestamp="1593947494650">
+    <state x="651" y="170" key="FileChooserDialogImpl" timestamp="1595542184491">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588737480812" />
-    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593947494650" />
-    <state x="718" y="334" key="NewPhpClassDialog" timestamp="1590380247505">
+    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595542184491" />
+    <state x="718" y="334" key="NewPhpClassDialog" timestamp="1595310127618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="718" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590380247505" />
+    <state x="718" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595310127618" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1590874131041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590874131041" />
-    <state width="519" height="446" key="SwitcherDM" timestamp="1586798031197">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="519" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1586798031197" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1593445898374">
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1595531220660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588841890755" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593445898374" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595531220660" />
     <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591401105759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591401105759" />
-    <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1586798119018">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586798119018" />
     <state x="701" y="153" key="refactoring.ChangeSignatureDialog" timestamp="1591472491790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -389,7 +398,6 @@
     <state x="859" y="70" width="672" height="678" key="search.everywhere.popup" timestamp="1592312372816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="611" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586901495134" />
     <state x="859" y="70" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592312372816" />
   </component>
 </project>

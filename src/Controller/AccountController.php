@@ -91,6 +91,8 @@ class AccountController extends AbstractController
     /**
      * @Route("/account/profile", name="account_profile")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
      * @return Response
      */
     public function profile(Request $request, EntityManagerInterface $manager)
@@ -118,6 +120,9 @@ class AccountController extends AbstractController
     /**
      * @Route("/account/updatePassword", name="account_password")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @param EntityManagerInterface $manager
      * @return Response
      */
     public function updatePassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $manager)
