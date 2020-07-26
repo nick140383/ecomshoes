@@ -38,11 +38,7 @@ class ModeleChaussureType extends AbstractType
 
             ->setMethod("POST")
 
-            ->add('tailles', EntityType::class, [
-                'class' => Taille::class,
-                'choice_label' => 'taille',
-               'multiple' => true
-            ])
+
             ->add('marque',EntityType::class,[
                 'class'=>Marque::class,
                 'choice_label'=>'nom'

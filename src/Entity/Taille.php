@@ -34,7 +34,7 @@ class Taille
     private $commandes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Stock::class, mappedBy="taille")
+     * @ORM\OneToOne(targetEntity=Stock::class, mappedBy="taille")
      */
     private $stock;
 

@@ -316,7 +316,10 @@
       <workItem from="1595345871344" duration="1456000" />
       <workItem from="1595520184692" duration="7791000" />
       <workItem from="1595530928952" duration="21497000" />
-      <workItem from="1595590539822" duration="12667000" />
+      <workItem from="1595590539822" duration="13050000" />
+      <workItem from="1595649066732" duration="478000" />
+      <workItem from="1595693106493" duration="16292000" />
+      <workItem from="1595742225209" duration="1121000" />
     </task>
     <servers />
   </component>
@@ -344,10 +347,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587236029831" />
-    <state x="363" y="92" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587042625784">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="363" y="92" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1587042625784" />
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588474705608">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -382,11 +381,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590874131041" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1595531220660">
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1595742274972">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588841890755" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595531220660" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595742274972" />
     <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591401105759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -16,10 +16,15 @@ class StockType extends AbstractType
         $builder
             ->add('quantite')
             ->add('modeleChaussure')
-            ->add('tailles', EntityType::class, [
+            ->add('taille', EntityType::class, [
                 'class' => Taille::class,
                 'choice_label' => 'taille',
-            'mapped'=>false,])
+                'required' => false,
+                //'empty_data'=>true,
+                'multiple' => false,
+               // 'expanded' => true,
+           // 'data_class'=>null,
+            'mapped'=>true,])
         ;
     }
 

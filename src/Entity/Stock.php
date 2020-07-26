@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=StockRepository::class)
@@ -24,11 +25,12 @@ class Stock
 
     /**
      * @ORM\ManyToOne(targetEntity=ModeleChaussure::class, inversedBy="stocks")
+     * @JoinColumn(name="id", referencedColumnName="modeleChaussure_id", onDelete="CASCADE")
      */
     private $modeleChaussure;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Taille::class, inversedBy="stock")
+     * @ORM\OneToOne(targetEntity=Taille::class, inversedBy="stock")
      */
     private $taille;
 
@@ -61,12 +63,12 @@ class Stock
         return $this;
     }
 
-    public function getTaille(): ?Taille
+    public function getTaille()
     {
         return $this->taille;
     }
 
-    public function setTaille(?Taille $taille): self
+    public function setTaille( $taille)
     {
         $this->taille = $taille;
 
