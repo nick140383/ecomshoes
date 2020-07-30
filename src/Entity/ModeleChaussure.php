@@ -80,7 +80,7 @@ class ModeleChaussure
     private $coverImage;
 
     /**
-     * @ORM\OneToMany(targetEntity=Stock::class, mappedBy="modeleChaussure")
+     * @ORM\OneToMany(targetEntity=Stock::class, mappedBy="modeleChaussure",orphanRemoval=true)
      */
     private $stocks;
 

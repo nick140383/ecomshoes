@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ModeleChaussure;
 use App\Entity\Stock;
+use App\Entity\Taille;
 use App\Form\StockType;
 use App\Repository\ClientRepository;
 use App\Repository\MarqueRepository;
@@ -42,11 +43,22 @@ class StockController extends AbstractController
     public function createStock(Request $request, EntityManagerInterface $manager)
     {
 
+
+         $taille= $this->getDoctrine()->getRepository(Taille::class)->findAll();
+        $tail=[];
         $stock = new Stock();
         $list = $this->marqueRepository->findAll();
         $form = $this->createForm(StockType::class, $stock);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+          //  $stock->save();
+                $manager->persist($stock);
+                $manager->flush();
+
 
             $manager->persist($stock);
             $manager->flush();

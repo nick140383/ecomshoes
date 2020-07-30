@@ -14,7 +14,11 @@ class StockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantite')
+            ->add('quantite', null, [
+                'required'   => true,
+                'mapped'=>true,
+                'empty_data'=>true,
+            ])
             ->add('modeleChaussure')
             ->add('taille', EntityType::class, [
                 'class' => Taille::class,
@@ -24,7 +28,7 @@ class StockType extends AbstractType
                 'multiple' => false,
                // 'expanded' => true,
            // 'data_class'=>null,
-            'mapped'=>true,])
+            'mapped'=>true])
         ;
     }
 

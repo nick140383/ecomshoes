@@ -8,6 +8,12 @@ use Carbon\Carbon;
 
 use App\Entity\Client;
 use App\Entity\Livraison;
+use Stripe\Card;
+//use Stripe\Error\Card;
+use Stripe\Charge;
+use Stripe\Exception\ApiErrorException;
+use Stripe\Stripe;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Commande;
 use App\Entity\LigneCommande;
@@ -120,7 +126,9 @@ class CommandeController extends AbstractController
                 "Merci<strong class='text-danger'>{$user->getNom()}</strong> Commande validée avec succès
 ");
 
+
             return $this->redirectToRoute( 'home');
+
         }
 
     }
@@ -135,6 +143,34 @@ class CommandeController extends AbstractController
 
 // Convert back to the specified date format
         return date($sFormat, $fVal);
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/checkoutAction",name="checkout")
+     * @return RedirectResponse
+     * @throws ApiErrorException
+     */
+    public function checkoutAction(Request $request){
+        $error=false;
+        $token=$request->request->get('stripeToken');
+        $user=$this->getUser();
+        try {
+            Stripe::setApiKey( "sk_test_51HAAleJZeTjJHZS4LQs1woXQvLbw1CreXElOEmfcoCWl8V4O8dlLbY8gmlp7KGCnYgLwrBmcsdASgZw3e4shMNnK000lVBx62J");
+            Charge::create([
+                "amount"=>999,
+                "currency"=>"eur",
+                "source"=>$token,
+                "description"=>"Charge for jenny.rosen@example.com",
+            ]);
+
+        } catch (\Stripe\Error\Card $exception){
+            $error=$exception->getMessage();
+        }
+        if(!$error){
+            $this->addFlash('success',"Votre paiement a bien été éffectué");
+            return $this->redirectToRoute('commande');
+        }
     }
 
 

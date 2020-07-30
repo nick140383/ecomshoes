@@ -7,6 +7,7 @@ use App\Repository\ClientRepository;
 use App\Repository\MarqueRepository;
 use App\Repository\ModeleChaussureRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,28 +39,28 @@ class AdminModeleChaussureController extends AbstractController
     }
 
     /**
-     * @Route("/admin/chaussures{id}/delete",name="admin_chaussures_delete")
-     *
-     * @param ModeleChaussure $chaussure
+     * @Route("/chaussure{id}/delete",name="admin_chaussures_delete", methods={"GET","POST"},requirements={"id"="\d+"})
+     * @ParamConverter("id",options={"id": "id"})
+     * @param ModeleChaussure $modeleChaussure
      * @param EntityManagerInterface $manager
      * @return RedirectResponse
      */
 
-    public function  deleteShoes(ModeleChaussure $chaussure,EntityManagerInterface $manager)
+    public function  deleteShoes(ModeleChaussure $modeleChaussure,EntityManagerInterface $manager)
     {
-        if (count($chaussure->getCommandes())>0){
+        if (count($modeleChaussure->getCommandes())>0){
             $this->addFlash(
                 'warning',
-                "you can't delete this shoe<stong>{$chaussure->getNom()}</stong>it has been already ordered!"
+                "you can't delete this shoe<stong>{$modeleChaussure->getNom()}</stong>it has been already ordered!"
             );
         }else{
-            $manager->remove($chaussure);
+            $manager->remove($modeleChaussure);
             $manager->flush();
             $this->addFlash(
                 'success',
-                "the shoe<strong>{$chaussure->getNom()}</strong>a bien été supprimé"
+                "the shoe<strong>{$modeleChaussure->getNom()}</strong>a bien été supprimé"
             );
         }
-        return $this->redirectToRoute(' admin_modele_chaussure');
+        return $this->redirectToRoute('admin_modele_chaussure');
     }
 }

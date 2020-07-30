@@ -58,11 +58,29 @@
             </tfoot>
 
         </table>
+
+            <script src="https://js.stripe.com/v3/"></script>
+            <form action="{{ path('checkout') }}" method="POST">
+                <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_51HAAleJZeTjJHZS4HHWaGMPpqAUpRyBSKmQEJZ0yz32ptsq0UP1YmAYvcuwg1UsFsmdOGtaXDXQ0Wn89clG19KQh00WXjUQ6W2"
+                        data-amount="999"
+                        data-name="Demo Site"
+                        data-description="Widget"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto"
+                        data-currency="eur">
+                </script>
+            </form>
+
+
         <a href="commande" class="btn btn-success float-right"><i class="fa fa-euro"></i> payer!</a>
     {% else %}
         <p>Surprise c'est vide</p>
     {% endif %}
     <a href="{{ path('home') }}" class="btn btn-success align-self-center"><i class="fas fa-home"></i> Accueil!</a>
+    <script src="https://js.stripe.com/v3/"></script>
+
 
     {% block javascripts %}
         <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/2e75c5cb4f.js"></script>

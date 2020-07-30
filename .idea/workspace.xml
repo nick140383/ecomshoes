@@ -35,9 +35,6 @@
     <expand />
     <select />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="ecomshoes" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -163,13 +160,13 @@
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1a7o5z1wMKeOsNHvHhtIeT1392v" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -177,7 +174,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ecommerce" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/myEcommerce-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -319,12 +316,21 @@
       <workItem from="1595590539822" duration="13050000" />
       <workItem from="1595649066732" duration="478000" />
       <workItem from="1595693106493" duration="16292000" />
-      <workItem from="1595742225209" duration="1121000" />
+      <workItem from="1595742225209" duration="13199000" />
+      <workItem from="1595821194254" duration="1231000" />
+      <workItem from="1595868422390" duration="1978000" />
+      <workItem from="1595932419147" duration="247000" />
+      <workItem from="1595932788112" duration="160000" />
+      <workItem from="1595933352535" duration="335000" />
+      <workItem from="1595934126709" duration="14958000" />
+      <workItem from="1595975098727" duration="6656000" />
+      <workItem from="1596008821141" duration="20791000" />
+      <workItem from="1596110894341" duration="853000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="667" y="110" key="#PHP" timestamp="1593634705603">
@@ -343,19 +349,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="634" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595270544546" />
-    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1587236029831">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1595932808554">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="488" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587236029831" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595932808554" />
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588474705608">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588474705608" />
-    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595602443407">
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596026662081">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587597346606" />
-    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595602443407" />
+    <state x="580" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596026662081" />
     <state x="240" y="377" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1590102933846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -368,11 +374,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1040@0.0.1920.1040" timestamp="1593784020899" />
-    <state x="651" y="170" key="FileChooserDialogImpl" timestamp="1595542184491">
+    <state x="651" y="170" key="FileChooserDialogImpl" timestamp="1596023725012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588737480812" />
-    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595542184491" />
+    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596023725012" />
     <state x="718" y="334" key="NewPhpClassDialog" timestamp="1595310127618">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -381,11 +387,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590874131041" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1595742274972">
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1595932802546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588841890755" />
-    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595742274972" />
+    <state x="533" y="269" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595932802546" />
     <state x="621" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591401105759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
