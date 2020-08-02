@@ -75,8 +75,8 @@ class DetailChaussureController extends AbstractController
         $stocks = $this->getDoctrine()->getRepository(Stock::class)->findBy(array('modeleChaussure' => $chaussure));
         $stocksArr = array();
         foreach ($stocks as $stock) {
-           // dd($stock);
-            $stocksArr = array($stock->getTaille()->getId() => $stock->getQuantite());
+            $stocksArr[$stock->getTaille()->getId()] = $stock->getQuantite();
+            //$stocksArr = array($stock->getTaille()->getId() => $stock->getQuantite());
         }
 
         return $this->render('detail_chaussure/index.html.twig', [

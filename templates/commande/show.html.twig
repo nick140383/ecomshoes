@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande n°{{ commande.id }}!{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Votre Commande n°{{ commande.id }}</h1>
+    </div>
+
+    {% set modeleChaussures=commande.modeleChaussures %}
+
+<div class="row mt-5">
+    <div class="col-4">
+
+    </div>
+    <div class="col-8">
+
+    </div>
+
+
+{% endblock %}

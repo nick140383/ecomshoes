@@ -3,6 +3,8 @@
 namespace App\Controller;
 use App\Entity\Stock;
 use App\Entity\Taille;
+use App\Repository\ClientRepository;
+use App\Repository\MarqueRepository;
 use Carbon\Carbon;
 
 
@@ -20,11 +22,22 @@ use App\Entity\LigneCommande;
 use App\Entity\ModeleChaussure;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
 {
 
+    /**
+     * @var ClientRepository
+     */
+    private $marqueRepository;
+    private $clientRepository;
+    function __construct(MarqueRepository $marqueRepository,ClientRepository $clientRepository)
+    {
+        $this->marqueRepository = $marqueRepository;
+        $this->clientRepository=$clientRepository;
+    }
 
     /**
      * @Route("/commande", name="commande")
@@ -38,6 +51,7 @@ class CommandeController extends AbstractController
         } else {
             // $session = $this->get('request_stack')->getCurrentRequest()->getSession();
             $session = $request->getSession();
+            $this->redirectToRoute('checkout');
             $commande = new Commande();
             if (!($session->has('panier'))) {
 
@@ -158,7 +172,7 @@ class CommandeController extends AbstractController
         try {
             Stripe::setApiKey( "sk_test_51HAAleJZeTjJHZS4LQs1woXQvLbw1CreXElOEmfcoCWl8V4O8dlLbY8gmlp7KGCnYgLwrBmcsdASgZw3e4shMNnK000lVBx62J");
             Charge::create([
-                "amount"=>999,
+                "amount"=>$co,
                 "currency"=>"eur",
                 "source"=>$token,
                 "description"=>"Charge for jenny.rosen@example.com",
@@ -171,6 +185,22 @@ class CommandeController extends AbstractController
             $this->addFlash('success',"Votre paiement a bien été éffectué");
             return $this->redirectToRoute('commande');
         }
+    }
+
+    /**
+     * permet d'afficher la page d'une commande
+     *
+     * @Route("/commande/{id}",name="commande_show")
+     *
+     * @param Commande $commande
+     * @return Response
+     */
+    public function  show(Commande $commande){
+        $list = $this->marqueRepository->findAll();
+        return$this->render('commande/show.html.twig',[
+            'commande'=>$commande,
+            'list'=>$list
+        ]);
     }
 
 

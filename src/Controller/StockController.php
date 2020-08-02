@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,31 +55,39 @@ class StockController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
+          if(!$stock) {
 
-          //  $stock->save();
-                $manager->persist($stock);
-                $manager->flush();
+              $manager->persist($stock);
+              $manager->flush();
 
 
-            $manager->persist($stock);
-            $manager->flush();
-            return $this->redirectToRoute('home');
+              $manager->persist($stock);
+              $manager->flush();
+              return $this->redirectToRoute('home');
+          }
+          else{
+              $this->redirectToRoute('stock_edit');
+          }
         }
 
         return $this->render('stock/new.html.twig', [
-            'form' => $form->createView(), 'list' => $list
+            'form' => $form->createView(),
+            'list' => $list,
+            'stock'=>$stock
         ]);
     }
 
     /**
      * @Route("/stock/{id}/edit" ,name="stock_edit",methods={"GET","POST"})
+     * @ParamConverter("id", options={"id": "id"})
+
      * @param Stock $stock
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param ModeleChaussure $chaussure
      * @return RedirectResponse|Response
      */
-    public function edit(Stock $stock, Request $request, EntityManagerInterface $manager,ModeleChaussure $chaussure)
+    public function edit(Stock $stock, Request $request, EntityManagerInterface $manager,ModeleChaussure $chaussure,$id)
     {
         $list = $this->marqueRepository->findAll();
         $form = $this->createForm(StockType::class, $stock);
@@ -87,7 +96,7 @@ class StockController extends AbstractController
 
             $manager->persist($stock);
             $manager->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('stock_edit',['id'=>$id]);
 
 
         }

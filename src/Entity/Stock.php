@@ -5,9 +5,13 @@ namespace App\Entity;
 use App\Repository\StockRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=StockRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\StockRepository")
+
+
  */
 class Stock
 {

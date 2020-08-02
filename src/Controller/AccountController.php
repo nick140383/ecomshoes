@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\ModeleChaussure;
 use App\Entity\PasswordUpdate;
 use App\Form\AccountType;
 use App\Form\PasswordUpdateType;
@@ -159,5 +160,21 @@ class AccountController extends AbstractController
         }
         return $this->render('account/password.html.twig', [
             'form' => $form->createView(),'list' =>$list]);
+    }
+
+    /**
+     * permet d'afficher la liste des commandes faites par le client
+     *
+     * @Route("/account/commandes",name="account_commandes")
+     *
+     * @return Response
+     */
+    public function commandes(){
+        $chaussue=new ModeleChaussure();
+        $list = $this->marqueRepository->findAll();
+        return $this->render('account/commandes.html.twig',[
+            'list'=>$list,
+            'chaussure'=>$chaussue
+        ]);
     }
 }
